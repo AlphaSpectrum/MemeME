@@ -41,6 +41,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         subscribeToKeyboardNotifications()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
     
     
     // MARK: Delegate Attributes
@@ -51,6 +55,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            switch text {
+            case "TOP TEXT...", "BOTTOM TEXT...":
+                textField.text = ""
+            default:
+                self.currentTextField.text = textField.text
+            }
+        }
         self.toolBar.isHidden = true
         self.currentTextField = textField
     }

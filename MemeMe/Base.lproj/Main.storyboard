@@ -27,30 +27,30 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKh-hY-DO5">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="250"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM TEXT..." textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="PHY-VP-UNG">
-                                        <rect key="frame" x="38.666666666666686" y="184" width="273" height="51"/>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM TEXT..." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHY-VP-UNG">
+                                        <rect key="frame" x="39" y="184" width="273" height="51"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT..." textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="U0n-MM-8ee">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT..." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0n-MM-8ee">
                                         <rect key="frame" x="78" y="15" width="194" height="51"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="40"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="YKh-hY-DO5" secondAttribute="bottom" id="3bq-47-xOb"/>
                                     <constraint firstAttribute="width" constant="350" id="89a-eB-vca"/>
+                                    <constraint firstItem="U0n-MM-8ee" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="FYM-x9-mPd"/>
                                     <constraint firstItem="YKh-hY-DO5" firstAttribute="top" secondItem="Fzz-um-UPE" secondAttribute="top" id="UwV-y1-025"/>
                                     <constraint firstItem="PHY-VP-UNG" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="W9u-jh-ns4"/>
                                     <constraint firstItem="YKh-hY-DO5" firstAttribute="leading" secondItem="Fzz-um-UPE" secondAttribute="leading" id="Zhy-FV-lwV"/>
                                     <constraint firstAttribute="trailing" secondItem="YKh-hY-DO5" secondAttribute="trailing" id="k7A-Ni-jVT"/>
                                     <constraint firstAttribute="height" constant="250" id="mmT-gB-gRD"/>
                                     <constraint firstItem="U0n-MM-8ee" firstAttribute="top" secondItem="Fzz-um-UPE" secondAttribute="top" constant="15" id="vHZ-I2-YCI"/>
-                                    <constraint firstItem="U0n-MM-8ee" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="xcy-l1-eYE"/>
                                     <constraint firstAttribute="bottom" secondItem="PHY-VP-UNG" secondAttribute="bottom" constant="15" id="yNz-GB-4oy"/>
                                 </constraints>
                             </view>
