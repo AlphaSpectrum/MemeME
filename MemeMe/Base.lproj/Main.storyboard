@@ -1,26 +1,97 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzz-um-UPE">
+                                <rect key="frame" x="32" y="243" width="350" height="250"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKh-hY-DO5">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="250"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM TEXT..." textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="PHY-VP-UNG">
+                                        <rect key="frame" x="38.666666666666686" y="184" width="273" height="51"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT..." textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="U0n-MM-8ee">
+                                        <rect key="frame" x="78" y="15" width="194" height="51"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YKh-hY-DO5" secondAttribute="bottom" id="3bq-47-xOb"/>
+                                    <constraint firstAttribute="width" constant="350" id="89a-eB-vca"/>
+                                    <constraint firstItem="YKh-hY-DO5" firstAttribute="top" secondItem="Fzz-um-UPE" secondAttribute="top" id="UwV-y1-025"/>
+                                    <constraint firstItem="PHY-VP-UNG" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="W9u-jh-ns4"/>
+                                    <constraint firstItem="YKh-hY-DO5" firstAttribute="leading" secondItem="Fzz-um-UPE" secondAttribute="leading" id="Zhy-FV-lwV"/>
+                                    <constraint firstAttribute="trailing" secondItem="YKh-hY-DO5" secondAttribute="trailing" id="k7A-Ni-jVT"/>
+                                    <constraint firstAttribute="height" constant="250" id="mmT-gB-gRD"/>
+                                    <constraint firstItem="U0n-MM-8ee" firstAttribute="top" secondItem="Fzz-um-UPE" secondAttribute="top" constant="15" id="vHZ-I2-YCI"/>
+                                    <constraint firstItem="U0n-MM-8ee" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="xcy-l1-eYE"/>
+                                    <constraint firstAttribute="bottom" secondItem="PHY-VP-UNG" secondAttribute="bottom" constant="15" id="yNz-GB-4oy"/>
+                                </constraints>
+                            </view>
+                            <toolbar clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAI-m2-i64">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" systemItem="camera" id="F0d-HX-lUd">
+                                        <connections>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="8df-2i-Yje"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MJF-rY-dBD"/>
+                                    <barButtonItem tag="1" title="Album" style="done" id="IVT-CN-R5F">
+                                        <connections>
+                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="mcM-hh-ILi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Fzz-um-UPE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EYB-Qt-ABc"/>
+                            <constraint firstAttribute="trailing" secondItem="HAI-m2-i64" secondAttribute="trailing" id="EvW-1v-C4o"/>
+                            <constraint firstItem="HAI-m2-i64" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yvc-0h-4cM"/>
+                            <constraint firstItem="Fzz-um-UPE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mVh-rQ-MdN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HAI-m2-i64" secondAttribute="bottom" id="t5n-8j-FMc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomTextField" destination="PHY-VP-UNG" id="N1S-23-nDi"/>
+                        <outlet property="imageView" destination="YKh-hY-DO5" id="0PB-jF-nNf"/>
+                        <outlet property="pickFromCameraButton" destination="F0d-HX-lUd" id="vQk-TU-YLZ"/>
+                        <outlet property="toolBar" destination="HAI-m2-i64" id="Uac-bk-yEI"/>
+                        <outlet property="topTextField" destination="U0n-MM-8ee" id="bHR-lJ-rqW"/>
+                        <outlet property="viewContainer" destination="Fzz-um-UPE" id="wXc-y4-Ktu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>
