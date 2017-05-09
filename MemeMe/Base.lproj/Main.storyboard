@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MemeME-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MemeME" id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -28,13 +28,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="250"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM TEXT..." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PHY-VP-UNG">
-                                        <rect key="frame" x="39" y="184" width="273" height="51"/>
+                                        <rect key="frame" x="0.0" y="184" width="350" height="51"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="40"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP TEXT..." textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0n-MM-8ee">
-                                        <rect key="frame" x="78" y="15" width="194" height="51"/>
+                                        <rect key="frame" x="0.0" y="15" width="350" height="51"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="40"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -45,6 +45,10 @@
                                     <constraint firstAttribute="bottom" secondItem="YKh-hY-DO5" secondAttribute="bottom" id="3bq-47-xOb"/>
                                     <constraint firstAttribute="width" constant="350" id="89a-eB-vca"/>
                                     <constraint firstItem="U0n-MM-8ee" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="FYM-x9-mPd"/>
+                                    <constraint firstAttribute="trailing" secondItem="U0n-MM-8ee" secondAttribute="trailing" id="IGL-DK-sfX"/>
+                                    <constraint firstItem="U0n-MM-8ee" firstAttribute="leading" secondItem="Fzz-um-UPE" secondAttribute="leading" id="K75-jA-IrF"/>
+                                    <constraint firstItem="PHY-VP-UNG" firstAttribute="leading" secondItem="Fzz-um-UPE" secondAttribute="leading" id="MFz-72-k7C"/>
+                                    <constraint firstAttribute="trailing" secondItem="PHY-VP-UNG" secondAttribute="trailing" id="QD6-bx-gwj"/>
                                     <constraint firstItem="YKh-hY-DO5" firstAttribute="top" secondItem="Fzz-um-UPE" secondAttribute="top" id="UwV-y1-025"/>
                                     <constraint firstItem="PHY-VP-UNG" firstAttribute="centerX" secondItem="Fzz-um-UPE" secondAttribute="centerX" id="W9u-jh-ns4"/>
                                     <constraint firstItem="YKh-hY-DO5" firstAttribute="leading" secondItem="Fzz-um-UPE" secondAttribute="leading" id="Zhy-FV-lwV"/>
@@ -62,10 +66,20 @@
                                             <action selector="pickImage:" destination="BYZ-38-t0r" id="8df-2i-Yje"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MJF-rY-dBD"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vCE-XL-1cV"/>
                                     <barButtonItem tag="1" title="Album" style="done" id="IVT-CN-R5F">
                                         <connections>
                                             <action selector="pickImage:" destination="BYZ-38-t0r" id="mcM-hh-ILi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJD-2X-ORG">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem title="Share" style="plain" id="MYV-dx-vTa">
+                                        <connections>
+                                            <action selector="share:" destination="BYZ-38-t0r" id="C4d-1L-kgE"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -75,8 +89,12 @@
                         <constraints>
                             <constraint firstItem="Fzz-um-UPE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EYB-Qt-ABc"/>
                             <constraint firstAttribute="trailing" secondItem="HAI-m2-i64" secondAttribute="trailing" id="EvW-1v-C4o"/>
+                            <constraint firstAttribute="trailing" secondItem="wJD-2X-ORG" secondAttribute="trailing" id="Hcv-1S-6D3"/>
+                            <constraint firstItem="wJD-2X-ORG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Trl-BE-1Bn"/>
                             <constraint firstItem="HAI-m2-i64" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yvc-0h-4cM"/>
+                            <constraint firstItem="wJD-2X-ORG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="l7O-SB-l1v"/>
                             <constraint firstItem="Fzz-um-UPE" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mVh-rQ-MdN"/>
+                            <constraint firstItem="wJD-2X-ORG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nsZ-Eo-J76"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HAI-m2-i64" secondAttribute="bottom" id="t5n-8j-FMc"/>
                         </constraints>
                     </view>
@@ -84,9 +102,10 @@
                         <outlet property="bottomTextField" destination="PHY-VP-UNG" id="N1S-23-nDi"/>
                         <outlet property="imageView" destination="YKh-hY-DO5" id="0PB-jF-nNf"/>
                         <outlet property="pickFromCameraButton" destination="F0d-HX-lUd" id="vQk-TU-YLZ"/>
-                        <outlet property="toolBar" destination="HAI-m2-i64" id="Uac-bk-yEI"/>
+                        <outlet property="share" destination="MYV-dx-vTa" id="A6n-g9-Q03"/>
+                        <outlet property="toolBar" destination="wJD-2X-ORG" id="1ZZ-79-E0O"/>
                         <outlet property="topTextField" destination="U0n-MM-8ee" id="bHR-lJ-rqW"/>
-                        <outlet property="viewContainer" destination="Fzz-um-UPE" id="wXc-y4-Ktu"/>
+                        <outlet property="viewContainer" destination="Fzz-um-UPE" id="QVQ-t8-cay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
