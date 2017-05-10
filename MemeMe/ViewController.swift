@@ -18,6 +18,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var pickFromCameraButton: UIBarButtonItem!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var chooseImageLabel: UILabel!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     
     let memeTextAttributes: [String : Any] = [
         NSStrokeColorAttributeName : UIColor.black,
@@ -28,17 +30,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (topTextField.defaultTextAttributes, bottomTextField.defaultTextAttributes) = (memeTextAttributes, memeTextAttributes)
-        self.topTextField.delegate = self
-        self.bottomTextField.delegate = self
-        self.share.isEnabled = false
-        self.topTextField.tag = 0
-        self.bottomTextField.tag = 1
+        share.isEnabled = false
+        prepareTextField(textField: topTextField)
+        prepareTextField(textField: bottomTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.pickFromCameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        pickFromCameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
     
@@ -47,11 +46,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
+    func prepareTextField(textField: UITextField) {
+        textField.delegate = self
+        textField.tag = (textField == topTextField) ? 0 : 1
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+    }
     
     // MARK: Delegate Attributes
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return true
     }
     
@@ -63,19 +68,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             default:()
             }
         }
-        self.currentTextField = textField
+        bottomToolbar.isHidden = true
+        currentTextField = textField
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
-            if text == "" && self.currentTextField.tag == 0 {
+            if text == "" && currentTextField.tag == 0 {
                 textField.text = "TOP TEXT..."
             }
-            if text == "" && self.currentTextField.tag == 1 {
+            if text == "" && currentTextField.tag == 1 {
                 textField.text = "BOTTOM TEXT..."
             }
         }
-        self.currentTextField = textField
+        currentTextField = textField
+        bottomToolbar.isHidden = false
         dismiss(animated: true, completion: nil)
     }
     
@@ -110,12 +117,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func getDistanceFromBottom() -> CGFloat {
-        let distance = ((self.view.frame.height) - (self.viewContainer.frame.height))
+        let distance = ((view.frame.height) - (viewContainer.frame.height))
         return round(distance/2)
     }
     
     func getDistanceFromTop() -> CGFloat {
-        let distance = self.viewContainer.frame.height + getDistanceFromBottom()
+        let distance = viewContainer.frame.height + getDistanceFromBottom()
         return round(distance)
     }
     
@@ -146,21 +153,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        let keyboardHeight = getKeyboardHeight(notification)
-        
-        if currentTextField.tag == 0 {
-            let distanceFromTop = getDistanceFromTop()
-            if keyboardHeight > distanceFromTop {
-                self.view.frame.origin.y = 0
-            }
-        }
-        
-        if currentTextField.tag == 1 {
-            let distanceFromBottom = getDistanceFromBottom()
-            if keyboardHeight > distanceFromBottom {
-                self.view.frame.origin.y = 0
-            }
-        }
+        view.frame.origin.y = 0
     }
     
     func subscribeToKeyboardNotifications() {
@@ -187,12 +180,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func share(_ sender: Any) {
-        let meme  = Meme(topText: topTextField, bottomText: bottomTextField, image: imageView, textAttributes: memeTextAttributes, imageDimensions: imageView.frame)
+    func save() {
+        // Create the meme
+        let memedImage = generateMemedImage()
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+    }
+    
+    func generateMemedImage() -> UIImage {
         
-        let activityViewController = UIActivityViewController(activityItems: [meme.getMemedImage()], applicationActivities: nil)
+        // TODO: Hide toolbar and navbar
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0.0)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // TODO: Show toolbar and navbar
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
+        
+        return memedImage
+    }
+    
+    @IBAction func share(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = { activityType, completed, returnedItems, activityError in
             if completed {
+                self.save()
                 //Dismiss the view controller
                 self.dismiss(animated: true, completion: nil)
             }
