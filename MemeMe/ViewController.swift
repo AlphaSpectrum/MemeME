@@ -82,10 +82,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: Actions from view
     
     @IBAction func pickImage(_ sender: UIButton) {
-        if sender.tag == 0 {
+        switch sender.tag {
+        case 0:
             pickImage(from: .camera)
-        } else {
+        case 1:
             pickImage(from: .photoLibrary)
+        default:()
         }
     }
     
@@ -117,13 +119,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return round(distance)
     }
     
+    // Detect automatically if the view needs to move to accomodate the currently active text field and move the view just the right amount
+    
     func keyboardWillShow(_ notification: Notification) {
         let keyboardHeight = getKeyboardHeight(notification)
         
         if currentTextField.tag == 0 {
             let distanceFromTop = getDistanceFromTop()
             if keyboardHeight > distanceFromTop {
-                // Reset the view
+                // Reset the position to avoid an issue where the view keeps moving up if you switch between fields without hitting the return key
                 self.view.frame.origin.y = 0
                 // Adjust the view
                 self.view.frame.origin.y -= keyboardHeight - distanceFromTop
@@ -133,7 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if currentTextField.tag == 1 {
             let distanceFromBottom = getDistanceFromBottom()
             if keyboardHeight > distanceFromBottom {
-                // Reset the view
+                // Reset the position to avoid an issue where the view keeps moving up if you switch between fields without hitting the return key
                 self.view.frame.origin.y = 0
                 // Adjust the view
                 self.view.frame.origin.y -= (keyboardHeight - distanceFromBottom)
@@ -168,7 +172,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
-    
     
     // MARK: Others
     
