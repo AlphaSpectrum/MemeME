@@ -146,7 +146,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if keyboardHeight > distanceFromBottom {
                 // Reset the position to avoid an issue where the view keeps moving up if you switch between fields without hitting the return key
                 self.view.frame.origin.y = 0
-                // Adjust the view
+                
                 self.view.frame.origin.y -= (keyboardHeight - distanceFromBottom)
             }
         }
