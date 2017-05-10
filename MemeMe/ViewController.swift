@@ -175,7 +175,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
-            imageView.contentMode = .scaleAspectFill
+            imageView.contentMode = .scaleAspectFit
         }
         dismiss(animated: true, completion: nil)
     }
