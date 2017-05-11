@@ -89,18 +89,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: Actions from view
     
     @IBAction func pickImage(_ sender: UIButton) {
-        switch sender.tag {
-        case 0:
-            pickImage(from: .camera)
-        case 1:
-            pickImage(from: .photoLibrary)
-        default:()
-        }
+        (sender.tag == 0) ? chooseImage(from: .camera) : chooseImage(from: .photoLibrary)
     }
     
     // MARK: Custom methods
     
-    func pickImage(from source: UIImagePickerControllerSourceType) {
+    func chooseImage(from source: UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = source
@@ -186,11 +180,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
     }
     
+    func hideToolbar(_ bool: Bool) {
+        topToolbar.isHidden = bool
+        bottomToolbar.isHidden = bool
+    }
+    
     func generateMemedImage() -> UIImage {
         
-        // TODO: Hide toolbar and navbar
-        topToolbar.isHidden = true
-        bottomToolbar.isHidden = true
+        hideToolbar(true)
         
         // Render view to an image
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, 0.0)
@@ -198,9 +195,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // TODO: Show toolbar and navbar
-        topToolbar.isHidden = false
-        bottomToolbar.isHidden = false
+        hideToolbar(false)
         
         return memedImage
     }
