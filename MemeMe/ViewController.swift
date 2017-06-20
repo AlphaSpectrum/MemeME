@@ -36,6 +36,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        chooseImageLabel.layer.masksToBounds = true
+        chooseImageLabel.layer.cornerRadius = 5
         super.viewWillAppear(animated)
         pickFromCameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
