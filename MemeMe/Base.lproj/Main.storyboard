@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-1579" y="-1233"/>
         </scene>
-        <!--Table View-->
+        <!--My Memes-->
         <scene sceneID="nws-eC-LtL">
             <objects>
                 <tableViewController id="TNk-ia-7dI" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                             <outlet property="delegate" destination="TNk-ia-7dI" id="5DR-Qm-8Mc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Table View" id="Khq-B4-Zcg">
+                    <navigationItem key="navigationItem" title="My Memes" id="Khq-B4-Zcg">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="w6a-qI-OfC">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="GRG-BZ-L3c"/>
@@ -80,7 +80,7 @@
             </objects>
             <point key="canvasLocation" x="-219" y="-798"/>
         </scene>
-        <!--Collection View-->
+        <!--My Memes-->
         <scene sceneID="tGx-1T-h1f">
             <objects>
                 <collectionViewController id="8PP-L3-Jch" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,7 +123,7 @@
                             <outlet property="delegate" destination="8PP-L3-Jch" id="pvb-H3-DxS"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Collection View" id="XMa-dx-4kB">
+                    <navigationItem key="navigationItem" title="My Memes" id="XMa-dx-4kB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kze-ZH-yzD">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="0vx-31-8tr"/>
