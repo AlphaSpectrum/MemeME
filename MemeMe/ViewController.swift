@@ -36,6 +36,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        chooseImageLabel.layer.masksToBounds = true
+        chooseImageLabel.layer.cornerRadius = 5
         super.viewWillAppear(animated)
         pickFromCameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
@@ -83,7 +85,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         currentTextField = textField
         bottomToolbar.isHidden = false
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Actions from view
@@ -169,7 +170,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFill
         }
         dismiss(animated: true, completion: nil)
     }
@@ -178,6 +179,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Create the meme
         let memedImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        
+        appDelegate.memes.append(meme)
     }
     
     func hideToolbar(_ bool: Bool) {
@@ -196,7 +202,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         hideToolbar(false)
-        
+
         return memedImage
     }
     
