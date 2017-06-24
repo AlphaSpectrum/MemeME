@@ -31,4 +31,11 @@ class MemeTableViewController: UITableViewController {
         cell.imageView?.contentMode = .scaleAspectFill
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "SentMemeDetailsViewController") as! SentMemeDetailsViewController
+        
+        detailsVC.receivedImage = self.memes[(indexPath as NSIndexPath).row].memedImage
+        self.navigationController!.pushViewController(detailsVC, animated: true)
+    }
 }
