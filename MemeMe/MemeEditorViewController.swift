@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     var currentTextField: UITextField!
     @IBOutlet weak var share: UIBarButtonItem!
@@ -54,6 +54,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
     }
+    
+    @IBAction func pressedCancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     // MARK: Delegate Attributes
     

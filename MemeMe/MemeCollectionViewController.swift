@@ -17,6 +17,12 @@ class MemeCollectionViewController: UICollectionViewController {
     var reuseIdentifier = "MemeCollectionViewCell"
     var memes: [Meme]!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        memes = appDelegate.memes
+        self.collectionView?.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +40,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let dimension = CGSize(width: width, height: height)
         return dimension
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        memes = appDelegate.memes
-        self.collectionView?.reloadData()
-    }
   
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
@@ -48,7 +49,7 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
         let meme = memes[(indexPath as NSIndexPath).row]
         cell.memeImageView.image = meme.memedImage
-        cell.memeImageView.contentMode = .scaleAspectFit
+        cell.memeImageView.contentMode = .scaleAspectFill
         return cell
     }
     

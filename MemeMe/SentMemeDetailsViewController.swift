@@ -14,7 +14,11 @@ class SentMemeDetailsViewController: UIViewController {
     
     var receivedImage: UIImage!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+        
+    override func viewDidLoad() {
         memeImageView.image = receivedImage
         memeImageView.contentMode = .scaleAspectFit
     }
