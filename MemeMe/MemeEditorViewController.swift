@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewControllers.swift
 //  MemeMe
 //
 //  Created by Alan Campos on 5/8/17.
@@ -175,7 +175,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
-            imageView.contentMode = .scaleAspectFill
+            imageView.contentMode = .scaleAspectFit
         }
         dismiss(animated: true, completion: nil)
     }

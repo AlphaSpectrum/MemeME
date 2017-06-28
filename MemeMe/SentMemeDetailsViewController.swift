@@ -14,12 +14,18 @@ class SentMemeDetailsViewController: UIViewController {
     
     var receivedImage: UIImage!
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = true
     }
         
     override func viewDidLoad() {
         memeImageView.image = receivedImage
         memeImageView.contentMode = .scaleAspectFit
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
 }
