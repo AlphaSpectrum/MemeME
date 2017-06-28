@@ -20,14 +20,19 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let space:CGFloat = 3.0
-        let dimensionW = (view.frame.size.width - (2 * space)) / 3.0
-        let dimensionH = (view.frame.size.height - (2 * space)) / 3.0
-
-        
+        let space: CGFloat = 1.0
+       
+        let previewDimension = scaleFrameSize(by: 3.0, view: view)
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimensionW, height: dimensionH)
+        flowLayout.itemSize = previewDimension
+    }
+    
+    func scaleFrameSize(by scaleValue: CGFloat, view: UIView ) -> CGSize {
+        let width = (view.frame.size.width - (2 * scaleValue)) / scaleValue
+        let height = (view.frame.size.height - (2 * scaleValue)) / scaleValue
+        let dimension = CGSize(width: width, height: height)
+        return dimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,5 +50,12 @@ class MemeCollectionViewController: UICollectionViewController {
         cell.memeImageView.image = meme.memedImage
         cell.memeImageView.contentMode = .scaleAspectFit
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "SentMemeDetailsViewController") as! SentMemeDetailsViewController
+        let currentSelectedImage = memes[(indexPath as NSIndexPath).row].memedImage
+        detailsViewController.receivedImage = currentSelectedImage
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }

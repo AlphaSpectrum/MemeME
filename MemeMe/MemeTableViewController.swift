@@ -28,14 +28,13 @@ class MemeTableViewController: UITableViewController {
         let meme = memes[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = meme.topText
         cell.imageView?.image = meme.memedImage
-        cell.imageView?.contentMode = .scaleAspectFill
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "SentMemeDetailsViewController") as! SentMemeDetailsViewController
+        let detailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "SentMemeDetailsViewController") as! SentMemeDetailsViewController
         
-        detailsVC.receivedImage = self.memes[(indexPath as NSIndexPath).row].memedImage
-        self.navigationController!.pushViewController(detailsVC, animated: true)
+        detailsViewController.receivedImage = self.memes[(indexPath as NSIndexPath).row].memedImage
+        self.navigationController!.pushViewController(detailsViewController, animated: true)
     }
 }
